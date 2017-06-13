@@ -5,7 +5,7 @@ var JSData = require('js-data');
 var DSMongoDBAdapter = require('js-data-mongodb');
 
 var store = new JSData.DS();
-var adapter = new DSMongoDBAdapter('mongodb://12345:67890@ds145289.mlab.com:45289/sampledb');
+var adapter = new DSMongoDBAdapter('mongodb://admin:admin@ds145289.mlab.com:45289/sampledb');
 
 // "store" will now use the MongoDB adapter for all async operations
 store.registerAdapter('mongodb', adapter, { default: true });
@@ -22,16 +22,35 @@ var tab = store.defineResource({
 });
 
 
-tab.findAll({
+/*tab.findAll({
 
-    role: {
-        '==': 'DESIGNENGINEER'
+    roles: {
+        'in': ['ADMIN', 'DESIGNENGINEER','DESIGNENGINEER1']
     }
 
+
 }).then(function(result) {
+    if(role == role in privilege.roles){
+        x = role;
+
+    }
+
     result.forEach(function(x){
         console.log(x.name);
     })
 
-});
+});*/
 
+
+tab.findAll({
+
+    name: 'RFQ_ADD',
+
+    roles: 'ADMIN'
+
+}).then(function(result) {
+    result.forEach(function(x){
+        console.log(x);
+    })
+
+});
