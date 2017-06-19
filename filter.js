@@ -41,10 +41,16 @@ var tab = store.defineResource({
 
 });*/
 
-tab.findAll({"name": "RFQ_ADD"},{"roles": "ADMINISTRATOR"}).then(function (results) {
-    results.forEach(function (x) {
-        console.log(x.name);
-       
+tab.findAll({
+
+    name: 'RFQ_ADD',
+
+    roles: 'DESIGNENGINEER'
+
+}).then(function(result) {
+    result.forEach(function(x){
+        console.log(x.name,x.roles);
     })
+
 });
 
